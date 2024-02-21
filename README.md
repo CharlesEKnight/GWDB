@@ -12,12 +12,19 @@ gwdb -b
 ```
 This will create a copy of pc.mv.db and pc.trace.db and the configured backup directory. A directory will be created here using the date and time as the file name and the two files will be stored inside of it.
 
-To add a useful description to the file name you can use the `-t` argument: 
+To add a useful description to the file name you can use the `-t` flag: 
 ```
 gwdb -bt "Some descriptive text"
 ```
 This will create a folder named using the date and time, as above, with your description
 added as a suffix.
+
+### Listing Backups
+
+You can list all of the backups in your backup directory using the `-l` flag:
+```
+gwdb -l
+```
 
 ## Installation
 To Do: Determine installation instructions
