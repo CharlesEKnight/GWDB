@@ -2,7 +2,8 @@
 GWDB is a simple script to assist with frequently backing up and restoring h2 databases during the InsuranceSuite configuration process.
 
 ## Usage
-To Do
+To Do: Continue Fleshing out usage.
+
 ### Creating a Backup of the Current H2 Database
 
 To backup the current H2 database run the following command:
@@ -17,8 +18,9 @@ gwdb -bt "Some descriptive text"
 ```
 This will create a folder named using the date and time, as above, with your description
 added as a suffix.
+
 ## Installation
-To Do
+To Do: Determine installation instructions
 
 ## Setup
-To Do
+To Do: Determine setup instructions
