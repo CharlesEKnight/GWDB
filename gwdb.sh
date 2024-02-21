@@ -67,6 +67,4 @@ if [ "$restoreJob" = true ] ; then
   restore_backup
 fi
 
-
-echo "Thank you! Please come again."
 exit 0
