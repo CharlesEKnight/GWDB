@@ -50,7 +50,7 @@ do
   esac
 done
 
-if [ -n "${tagValue}" -a -z "${backupJob}" ] ; then
+if [ -n "${tagValue}" ] && [ -z "${backupJob}" ] ; then
   echo "Error: -t flag can not be used without -b flag"
   exit 1
 fi
