@@ -50,20 +50,20 @@ do
   esac
 done
 
-if [ -n "$tagValue" -a -z "$backupJob" ] ; then
+if [ -n "${tagValue}" -a -z "${backupJob}" ] ; then
   echo "Error: -t flag can not be used without -b flag"
   exit 1
 fi
 
-if [ "$backupJob" = true ] ; then
+if [ "${backupJob}" = true ] ; then
   create_backup
 fi
 
-if [ "$listJob" = true ] ; then
+if [ "${listJob}" = true ] ; then
   list_backups
 fi
 
-if [ "$restoreJob" = true ] ; then
+if [ "${restoreJob}" = true ] ; then
   restore_backup
 fi
 
