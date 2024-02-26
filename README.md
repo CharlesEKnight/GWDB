@@ -59,8 +59,12 @@ $ ./gwdb.sh -r "02262024.1006 - First Edit"
 Restore Backup: 02262024.1006 - First Edit
 ```
 
-## Installation
-To Do: Determine installation instructions
+## Installation and Setup
+To Do: Update installation with more detailed instructions 
 
-## Setup
-To Do: Determine setup instructions
+1. Clone this repository to your local machine
+2. Optionally, copy `gwdb.sh` to the directory in which you would like it installed
+3. Make sure that the installation directory containing `gwdb.sh` is on your system PATH, or add it to the PATH
+4. Create a directory where you would like your backups to be stored
+5. Update the `backupDirectory` variable in the script with the aboslute path to your backup directory
+
