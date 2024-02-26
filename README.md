@@ -4,11 +4,13 @@ GWDB is a simple script to assist with frequently backing up and restoring h2 da
 ## Usage
 To Do: Continue Fleshing out usage.
 
+As currently written `gwdb.sh` should be run from within the directory that contains the h2 database files used by your local PolicyCenter server. This may change in the future.
+
 ### Creating a Backup of the Current H2 Database
 
 To backup the current H2 database run the following command:
 ```
-gwdb -b
+gwdb.sh -b
 ```
 This will create a copy of pc.mv.db and pc.trace.db and the configured backup directory. A directory will be created here using the date and time as the file name and the two files will be stored inside of it.
 
@@ -21,7 +23,7 @@ Completed.
 
 To add a useful description to the file name you can use the `-t` flag: 
 ```
-gwdb -bt "Some descriptive text"
+gwdb.sh -bt "Some descriptive text"
 ```
 #### Example
 ```
@@ -36,7 +38,7 @@ added as a suffix.
 
 You can list all of the backups in your backup directory using the `-l` flag:
 ```
-gwdb -l
+gwdb.sh -l
 ```
 
 #### Example
@@ -50,7 +52,7 @@ $ ./gwdb.sh -l
 ### Restoring Backups
 Backups can be restored using the `-r` flag. The `-r` flag requires the backup folder of the backup you wish to restore as an argument:
 ```
-gwdb -r 02212024.0301 
+gwdb.sh -r 02212024.0301 
 ```
 
 #### Example
