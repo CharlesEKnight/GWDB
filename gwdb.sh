@@ -5,7 +5,7 @@ dbFileName="pc.mv.db"
 traceFileName="pc.trace.db"
 
 print_usage(){
-  printf "USAGE INFO / HELP IS WORK IN NOT FINALIZED"
+  printf "USAGE INFO / HELP IS NOT FINALIZED"
   printf "Usage: gwdb.sh -b[t <tag info>]|l|r|h"
 }
 
