@@ -54,7 +54,10 @@ gwdb -r 02212024.0301
 ```
 
 #### Example
-To Do: Add example after feature is implemented.
+```
+$ ./gwdb.sh -r "02262024.1006 - First Edit"
+Restore Backup: 02262024.1006 - First Edit
+```
 
 ## Installation
 To Do: Determine installation instructions
