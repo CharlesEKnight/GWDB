@@ -30,8 +30,9 @@ list_backups(){
 }
 
 restore_backup(){
-  echo "Not yet implemented!!!"
   echo "Restore Backup: ${restoreTarget}"
+  cp "${backupDirectory}/${restoreTarget}/${dbFileName}" "${dbFileName}"
+  cp "${backupDirectory}/${restoreTarget}/${traceFileName}" "${traceFileName}" 
 }
 
 
