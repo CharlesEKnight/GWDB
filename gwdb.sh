@@ -13,7 +13,7 @@ create_backup(){
   timestamp=$(date +'%m%d%Y.%I%M')
   backupName=${timestamp}
 
-  if [ "${tagValue}" ] ; then
+  if [ $tagValue ] ; then
     backupName="${timestamp} - ${tagValue}"
   fi
   
