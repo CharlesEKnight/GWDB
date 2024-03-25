@@ -4,6 +4,8 @@ backupDirectory="./testBackupDir"
 dbFileName="pc.mv.db"
 traceFileName="pc.trace.db"
 
+declare -a backups
+
 print_usage(){
   printf "USAGE INFO / HELP IS NOT FINALIZED"
   printf "Usage: gwdb.sh -b[t <tag info>]|l|r|h"
@@ -24,29 +26,53 @@ create_backup(){
   echo "Completed."
 }
 
+get_array_of_backups(){
+  shopt -s nullglob
+  backups=("${backupDirectory}"/*/)
+  shopt -u nullglob
+}
+
 list_backups(){
   echo "-- Existing Backups --"
-  ls -t1 ${backupDirectory}
+  # ls -t1 ${backupDirectory}
+  get_array_of_backups
+  for i in "${!backups[@]}"; do
+    echo "${i}) ${backups[$i]}"
+  done
 }
 
 restore_backup(){
-  echo "Restore Backup: ${restoreTarget}"
-  cp "${backupDirectory}/${restoreTarget}/${dbFileName}" "${dbFileName}"
-  cp "${backupDirectory}/${restoreTarget}/${traceFileName}" "${traceFileName}" 
+  if [ -n "${restoreTarget}" ] ; then
+    echo "Restore Backup: ${restoreTarget}"
+    # cp "${backupDirectory}/${restoreTarget}/${dbFileName}" "${dbFileName}"
+    # cp "${backupDirectory}/${restoreTarget}/${traceFileName}" "${traceFileName}" 
+  fi
+}
+
+restore_backup_interactive(){
+  echo "-- Interactive Backup --"
+  echo "   Function not yet fully implemented"
+  echo ""
+
+  list_backups
+  read -p "Select restore: " restoreSelection
+  restoreTarget="${backups[$restoreSelection]}"
+  restore_backup
 }
 
 
-while getopts "bt:lr:h" flag;
+while getopts "bt:lrR:h" flag;
 do
   case ${flag} in
-    b) backupJob=true ;;
-    t) tagValue="${OPTARG}";;
-    l) listJob=true;;
-    r) restoreJob=true
+    b) backupJob=true ;;           # Backup
+    t) tagValue="${OPTARG}";;      # Optional tag value when creating backup
+    l) listJob=true;;              # List backup
+    r) restoreJob=true;;           # Interactive restore
+    R) restoreJob=true             # Restore
        restoreTarget="${OPTARG}";;
-    h) print_usage
+    h) print_usage                 # Help / Print usage
        exit 0 ;;
-    *) print_usage
+    *) print_usage                 # Everything else / Usage errors
        exit 1 ;;
   esac
 done
@@ -65,7 +91,12 @@ if [ "${listJob}" = true ] ; then
 fi
 
 if [ "${restoreJob}" = true ] ; then
-  restore_backup
+  if [ "${restoreTarget}" ] ; then
+    restore_backup
+    exit 0
+  fi
+
+  restore_backup_interactive
 fi
 
 exit 0
