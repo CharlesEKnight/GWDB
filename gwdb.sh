@@ -29,16 +29,17 @@ create_backup(){
 get_array_of_backups(){
   shopt -s nullglob
   backups=("${backupDirectory}"/*/)
+  # backups=($(ls -t1 "${backupDirectory}"))
   shopt -u nullglob
 }
 
 list_backups(){
   #TODO: Find way to display backups with just name of backup directory, not full path
+  #DONE: Can print just the last directory name with the basename command
   echo "-- Existing Backups --"
-  # ls -t1 ${backupDirectory}
   get_array_of_backups
   for i in "${!backups[@]}"; do
-    echo "${i}) ${backups[$i]}"
+    echo "${i}) $(basename "${backups[$i]}")"
   done
 }
 
@@ -51,15 +52,13 @@ restore_backup(){
 }
 
 restore_backup_interactive(){
-  #TODO: Find way to display backups with just name of backup directory, not full path
-  #      Use this to pass just name of backup to restore_backups
   echo "-- Interactive Backup --"
   echo "   Function not yet fully implemented"
   echo ""
 
   list_backups
   read -p "Select restore: " restoreSelection
-  restoreTarget="${backups[$restoreSelection]}"
+  restoreTarget=$(basename "${backups[$restoreSelection]}")
   restore_backup
 }
 
