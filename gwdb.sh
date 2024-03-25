@@ -33,6 +33,7 @@ get_array_of_backups(){
 }
 
 list_backups(){
+  #TODO: Find way to display backups with just name of backup directory, not full path
   echo "-- Existing Backups --"
   # ls -t1 ${backupDirectory}
   get_array_of_backups
@@ -50,6 +51,8 @@ restore_backup(){
 }
 
 restore_backup_interactive(){
+  #TODO: Find way to display backups with just name of backup directory, not full path
+  #      Use this to pass just name of backup to restore_backups
   echo "-- Interactive Backup --"
   echo "   Function not yet fully implemented"
   echo ""
