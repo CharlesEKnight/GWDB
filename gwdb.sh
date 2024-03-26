@@ -35,10 +35,15 @@ get_array_of_backups(){
 
 list_backups(){
   #TODO: Look in to faster method of determining basename; Apply here and in restore_backups_interactive
+  # https://unix.stackexchange.com/questions/171785/bash-variable-0/171786#171786
   echo "-- Existing Backups --"
   get_array_of_backups
   for i in "${!backups[@]}"; do
     echo "${i}) $(basename "${backups[$i]}")"
+    backupPath="${backups[$i]}"
+    backupPath="${backupPath%/}"
+    backup="${backupPath##*/}"
+    echo "${i}) ${backup}"
   done
 }
 
