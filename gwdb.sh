@@ -34,8 +34,7 @@ get_array_of_backups(){
 }
 
 list_backups(){
-  #TODO: Find way to display backups with just name of backup directory, not full path
-  #DONE: Can print just the last directory name with the basename command
+  #TODO: Look in to faster method of determining basename; Apply here and in restore_backups_interactive
   echo "-- Existing Backups --"
   get_array_of_backups
   for i in "${!backups[@]}"; do
